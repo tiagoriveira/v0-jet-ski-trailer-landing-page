@@ -26,27 +26,16 @@ export default function Home() {
 
       {/* Header */}
       <header className="fixed top-0 z-50 w-full border-b-4 border-primary bg-primary shadow-md">
-        <div className="container mx-auto flex h-20 items-center justify-between gap-3 px-4">
-          <div className="flex items-center gap-2 sm:gap-4">
-            <div className="rounded-lg bg-background px-3 py-2 shadow-sm sm:px-4">
-              <Image
-                src="/jvc-logo.png"
-                alt="JVC Carretas Logo"
-                width={120}
-                height={30}
-                className="h-auto w-20 object-contain sm:w-28"
-              />
-            </div>
-            <span className="text-lg font-bold text-primary-foreground sm:text-2xl">Carretas</span>
+        <div className="container mx-auto flex h-20 items-center justify-center px-4">
+          <div className="rounded-lg bg-background px-4 py-2 shadow-sm">
+            <Image
+              src="/jvc-logo.png"
+              alt="JVC Carretas Logo"
+              width={140}
+              height={35}
+              className="h-auto w-28 object-contain sm:w-32"
+            />
           </div>
-          <Button
-            onClick={scrollToForm}
-            size="lg"
-            className="bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-lg text-sm sm:text-base px-3 sm:px-4"
-          >
-            <span className="hidden sm:inline">Solicitar Orçamento</span>
-            <span className="sm:hidden">Orçamento</span>
-          </Button>
         </div>
       </header>
 

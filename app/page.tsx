@@ -63,35 +63,53 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-secondary/90 via-secondary/80 to-secondary" />
         </div>
 
-        <div className="container relative z-10 mx-auto px-4 text-center">
-          <h1 className="mb-6 text-balance text-4xl font-bold text-secondary-foreground drop-shadow-sm sm:text-5xl md:text-6xl lg:text-7xl">
-            Carretas Premium para{' '}
-            <span className="text-primary drop-shadow-[0_2px_8px_rgba(255,255,0,0.3)]">Jet Ski</span>
-          </h1>
-          <p className="mx-auto mb-8 max-w-2xl text-pretty text-base text-secondary-foreground/90 drop-shadow-sm sm:text-lg md:text-xl">
-            Fabricação sob medida com galvanização a fogo, estrutura reforçada e
-            acabamento impecável. A escolha de quem exige qualidade.
-          </p>
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button
-              onClick={scrollToForm}
-              size="lg"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_4px_12px_rgba(255,255,0,0.4)] hover:shadow-[0_6px_16px_rgba(255,255,0,0.5)] font-semibold text-base sm:text-lg px-6 sm:px-8"
-            >
-              Solicitar Orçamento Grátis
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-2 border-secondary-foreground/30 text-secondary-foreground hover:bg-secondary-foreground/10 bg-transparent backdrop-blur-sm font-semibold"
-              onClick={() =>
-                document
-                  .getElementById('diferenciais')
-                  ?.scrollIntoView({ behavior: 'smooth' })
-              }
-            >
-              Conhecer Diferenciais
-            </Button>
+        <div className="container relative z-10 mx-auto px-4">
+          <div className="grid gap-8 lg:grid-cols-2 lg:gap-12 items-center">
+            <div className="text-center lg:text-left">
+              <h1 className="mb-6 text-balance text-4xl font-bold text-secondary-foreground drop-shadow-sm sm:text-5xl md:text-6xl lg:text-7xl">
+                Carretas Premium para{' '}
+                <span className="text-primary drop-shadow-[0_2px_8px_rgba(255,255,0,0.3)]">Jet Ski</span>
+              </h1>
+              <p className="mx-auto lg:mx-0 mb-8 max-w-2xl text-pretty text-base text-secondary-foreground/90 drop-shadow-sm sm:text-lg md:text-xl">
+                Fabricação sob medida com galvanização a fogo, estrutura reforçada e
+                acabamento impecável. A escolha de quem exige qualidade.
+              </p>
+              <div className="flex flex-col items-center lg:items-start justify-center lg:justify-start gap-4 sm:flex-row">
+                <Button
+                  onClick={scrollToForm}
+                  size="lg"
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_4px_12px_rgba(255,255,0,0.4)] hover:shadow-[0_6px_16px_rgba(255,255,0,0.5)] font-semibold text-base sm:text-lg px-6 sm:px-8"
+                >
+                  Solicitar Orçamento Grátis
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-2 border-secondary-foreground/30 text-secondary-foreground hover:bg-secondary-foreground/10 bg-transparent backdrop-blur-sm font-semibold"
+                  onClick={() =>
+                    document
+                      .getElementById('diferenciais')
+                      ?.scrollIntoView({ behavior: 'smooth' })
+                  }
+                >
+                  Conhecer Diferenciais
+                </Button>
+              </div>
+            </div>
+
+            <div className="flex justify-center lg:justify-end">
+              <div className="w-full max-w-[350px] rounded-2xl overflow-hidden shadow-2xl border-4 border-primary/30">
+                <iframe
+                  src="https://www.instagram.com/reel/DBZp6-exrq4/embed"
+                  className="w-full aspect-[9/16]"
+                  style={{ minHeight: '600px' }}
+                  frameBorder="0"
+                  scrolling="no"
+                  allowTransparency
+                  allow="encrypted-media"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -102,7 +120,7 @@ export default function Home() {
           <div className="mb-12 text-center">
             <h2 className="mb-4 text-balance text-4xl font-bold text-foreground md:text-5xl">
               Por que escolher a{' '}
-              <span className="text-amber-600 dark:text-primary">JVC Carretas</span>?
+              <span className="text-black dark:text-foreground">JVC Carretas</span>?
             </h2>
             <p className="mx-auto max-w-2xl text-pretty text-lg text-muted-foreground">
               Mais de 15 anos de experiência fabricando carretas premium para
@@ -113,7 +131,7 @@ export default function Home() {
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             <Card className="border-primary/20 bg-card transition-all hover:shadow-xl hover:border-primary/40 hover:-translate-y-1">
               <CardContent className="flex flex-col items-center p-6 text-center">
-                <div className="mb-4 rounded-full bg-primary/20 p-4 shadow-md">
+                <div className="mb-4 rounded-full bg-black p-4 shadow-lg">
                   <Shield className="h-10 w-10 text-primary" />
                 </div>
                 <h3 className="mb-3 text-xl font-bold text-card-foreground">
@@ -128,7 +146,7 @@ export default function Home() {
 
             <Card className="border-primary/20 bg-card transition-all hover:shadow-xl hover:border-primary/40 hover:-translate-y-1">
               <CardContent className="flex flex-col items-center p-6 text-center">
-                <div className="mb-4 rounded-full bg-primary/20 p-4 shadow-md">
+                <div className="mb-4 rounded-full bg-black p-4 shadow-lg">
                   <Wrench className="h-10 w-10 text-primary" />
                 </div>
                 <h3 className="mb-3 text-xl font-bold text-card-foreground">
@@ -143,7 +161,7 @@ export default function Home() {
 
             <Card className="border-primary/20 bg-card transition-all hover:shadow-xl hover:border-primary/40 hover:-translate-y-1">
               <CardContent className="flex flex-col items-center p-6 text-center">
-                <div className="mb-4 rounded-full bg-primary/20 p-4 shadow-md">
+                <div className="mb-4 rounded-full bg-black p-4 shadow-lg">
                   <Truck className="h-10 w-10 text-primary" />
                 </div>
                 <h3 className="mb-3 text-xl font-bold text-card-foreground">
@@ -158,7 +176,7 @@ export default function Home() {
 
             <Card className="border-primary/20 bg-card transition-all hover:shadow-xl hover:border-primary/40 hover:-translate-y-1">
               <CardContent className="flex flex-col items-center p-6 text-center">
-                <div className="mb-4 rounded-full bg-primary/20 p-4 shadow-md">
+                <div className="mb-4 rounded-full bg-black p-4 shadow-lg">
                   <Award className="h-10 w-10 text-primary" />
                 </div>
                 <h3 className="mb-3 text-xl font-bold text-card-foreground">
@@ -179,7 +197,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="mb-12 text-center">
             <h2 className="mb-4 text-balance text-4xl font-bold text-foreground md:text-5xl">
-              Conheça nossos <span className="text-amber-600 dark:text-primary">produtos</span>
+              Conheça nossos <span className="text-black dark:text-foreground">produtos</span>
             </h2>
             <p className="mx-auto max-w-2xl text-pretty text-lg text-muted-foreground">
               Veja de perto a qualidade e os detalhes que fazem nossas carretas
@@ -195,7 +213,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="mb-12 text-center">
             <h2 className="mb-4 text-balance text-4xl font-bold text-foreground md:text-5xl">
-              O que dizem nossos <span className="text-amber-600 dark:text-primary">clientes</span>
+              O que dizem nossos <span className="text-black dark:text-foreground">clientes</span>
             </h2>
             <p className="mb-6 text-pretty text-lg text-muted-foreground">
               Confira as avaliações reais dos nossos clientes

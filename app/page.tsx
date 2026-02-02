@@ -3,6 +3,8 @@
 import Image from 'next/image'
 import { LeadForm } from '@/components/lead-form'
 import { TrailerGallery } from '@/components/trailer-gallery'
+import { ReviewsCarousel } from '@/components/reviews-carousel'
+import { FloatingInstagram } from '@/components/floating-instagram'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import {
@@ -10,9 +12,6 @@ import {
   Wrench,
   Truck,
   Award,
-  Instagram,
-  Facebook,
-  Mail,
 } from 'lucide-react'
 
 export default function Home() {
@@ -22,6 +21,9 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Floating Instagram Button */}
+      <FloatingInstagram />
+
       {/* Header */}
       <header className="fixed top-0 z-50 w-full border-b-4 border-primary bg-primary shadow-md">
         <div className="container mx-auto flex h-20 items-center justify-between gap-3 px-4">
@@ -100,7 +102,7 @@ export default function Home() {
           <div className="mb-12 text-center">
             <h2 className="mb-4 text-balance text-4xl font-bold text-foreground md:text-5xl">
               Por que escolher a{' '}
-              <span className="text-primary">JVC Carretas</span>?
+              <span className="text-amber-600 dark:text-primary">JVC Carretas</span>?
             </h2>
             <p className="mx-auto max-w-2xl text-pretty text-lg text-muted-foreground">
               Mais de 15 anos de experiência fabricando carretas premium para
@@ -177,7 +179,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="mb-12 text-center">
             <h2 className="mb-4 text-balance text-4xl font-bold text-foreground md:text-5xl">
-              Conheça nossos <span className="text-primary">produtos</span>
+              Conheça nossos <span className="text-amber-600 dark:text-primary">produtos</span>
             </h2>
             <p className="mx-auto max-w-2xl text-pretty text-lg text-muted-foreground">
               Veja de perto a qualidade e os detalhes que fazem nossas carretas
@@ -193,7 +195,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="mb-12 text-center">
             <h2 className="mb-4 text-balance text-4xl font-bold text-foreground md:text-5xl">
-              O que dizem nossos <span className="text-primary">clientes</span>
+              O que dizem nossos <span className="text-amber-600 dark:text-primary">clientes</span>
             </h2>
             <p className="mb-6 text-pretty text-lg text-muted-foreground">
               Confira as avaliações reais dos nossos clientes
@@ -224,64 +226,7 @@ export default function Home() {
             </Button>
           </div>
 
-          <div className="grid gap-8 md:grid-cols-3">
-            <Card className="border-border bg-card">
-              <CardContent className="p-6">
-                <div className="mb-4 flex gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <span key={i} className="text-primary">
-                      ★
-                    </span>
-                  ))}
-                </div>
-                <p className="mb-4 text-pretty text-card-foreground">
-                  &ldquo;Qualidade excepcional! A carreta é extremamente robusta e o
-                  acabamento é impecável. Melhor investimento que fiz.&rdquo;
-                </p>
-                <p className="font-semibold text-foreground">
-                  Ricardo M. - São Paulo
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-border bg-card">
-              <CardContent className="p-6">
-                <div className="mb-4 flex gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <span key={i} className="text-primary">
-                      ★
-                    </span>
-                  ))}
-                </div>
-                <p className="mb-4 text-pretty text-card-foreground">
-                  &ldquo;Uso em água salgada há 2 anos e está como nova. A
-                  galvanização realmente faz diferença. Recomendo!&rdquo;
-                </p>
-                <p className="font-semibold text-foreground">
-                  Mariana S. - Rio de Janeiro
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-border bg-card">
-              <CardContent className="p-6">
-                <div className="mb-4 flex gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <span key={i} className="text-primary">
-                      ★
-                    </span>
-                  ))}
-                </div>
-                <p className="mb-4 text-pretty text-card-foreground">
-                  &ldquo;Atendimento personalizado e produto sob medida. Ficou
-                  perfeito para meus 3 jet skis. Equipe muito profissional.&rdquo;
-                </p>
-                <p className="font-semibold text-foreground">
-                  Carlos A. - Florianópolis
-                </p>
-              </CardContent>
-            </Card>
-          </div>
+          <ReviewsCarousel />
         </div>
       </section>
 
@@ -311,68 +256,25 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t-4 border-primary bg-background py-12">
         <div className="container mx-auto px-4">
-          <div className="grid gap-8 md:grid-cols-3">
-            <div>
-              <div className="mb-4 flex items-center gap-3 rounded-lg bg-primary px-4 py-3 w-fit">
-                <Image
-                  src="/jvc-logo.png"
-                  alt="JVC Carretas Logo"
-                  width={120}
-                  height={30}
-                  className="h-auto w-24 object-contain"
-                />
-                <span className="text-xl font-bold text-primary-foreground">Carretas</span>
-              </div>
-              <p className="text-muted-foreground">
-                Carretas premium para jet ski. Qualidade e durabilidade em cada
-                detalhe.
-              </p>
+          <div className="flex flex-col items-center text-center">
+            <div className="mb-4 flex items-center gap-3 rounded-lg bg-primary px-4 py-3">
+              <Image
+                src="/jvc-logo.png"
+                alt="JVC Carretas Logo"
+                width={120}
+                height={30}
+                className="h-auto w-24 object-contain"
+              />
+              <span className="text-xl font-bold text-primary-foreground">Carretas</span>
             </div>
-
-            <div>
-              <h3 className="mb-4 font-semibold text-foreground">Contato</h3>
-              <div className="space-y-2 text-muted-foreground">
-                <p>WhatsApp: (11) 99999-9999</p>
-                <p>contato@jvccarretas.com.br</p>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="mb-4 font-semibold text-foreground">
-                Redes Sociais
-              </h3>
-              <div className="flex gap-4">
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-full bg-primary/10 p-2 text-primary transition-colors hover:bg-primary/20"
-                  aria-label="Instagram"
-                >
-                  <Instagram className="h-5 w-5" />
-                </a>
-                <a
-                  href="https://facebook.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-full bg-primary/10 p-2 text-primary transition-colors hover:bg-primary/20"
-                  aria-label="Facebook"
-                >
-                  <Facebook className="h-5 w-5" />
-                </a>
-                <a
-                  href="mailto:contato@jvccarretas.com.br"
-                  className="rounded-full bg-primary/10 p-2 text-primary transition-colors hover:bg-primary/20"
-                  aria-label="Email"
-                >
-                  <Mail className="h-5 w-5" />
-                </a>
-              </div>
-            </div>
+            <p className="mb-6 max-w-md text-muted-foreground">
+              Carretas premium para jet ski. Qualidade e durabilidade em cada
+              detalhe.
+            </p>
           </div>
 
-          <div className="mt-8 border-t border-border pt-8 text-center text-sm text-muted-foreground">
-            <p>&copy; 2025 JVC Carretas. Todos os direitos reservados.</p>
+          <div className="border-t border-border pt-8 text-center text-sm text-muted-foreground">
+            <p>&copy; 2026 JVC Carretas. Todos os direitos reservados.</p>
           </div>
         </div>
       </footer>

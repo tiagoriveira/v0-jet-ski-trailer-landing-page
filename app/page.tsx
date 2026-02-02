@@ -63,7 +63,7 @@ export default function Home() {
             <Button
               onClick={scrollToForm}
               size="lg"
-              className="bg-primary text-primary-foreground hover:bg-primary/90"
+              className="text-primary-foreground hover:bg-primary/90 bg-[rgba(255,240,0,1)]"
             >
               Solicitar Orçamento Grátis
             </Button>
@@ -169,8 +169,7 @@ export default function Home() {
               Conheça nossos <span className="text-primary">produtos</span>
             </h2>
             <p className="mx-auto max-w-2xl text-pretty text-lg text-muted-foreground">
-              Veja de perto a qualidade e os detalhes que fazem nossas carretas
-              serem referência no mercado.
+              Veja de perto a qualidade e os detalhes que fazem nossas carretas serem referência no mercado.
             </p>
           </div>
           <TrailerGallery />

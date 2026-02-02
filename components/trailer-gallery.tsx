@@ -12,15 +12,19 @@ import {
 const images = [
   {
     src: '/trailer-1.jpg',
-    alt: 'Carreta premium para jet ski com acabamento em preto',
+    alt: 'Jet ski azul montado em carreta JVC premium',
   },
   {
     src: '/trailer-2.jpg',
-    alt: 'Detalhes da estrutura galvanizada de alta qualidade',
+    alt: 'Carreta JVC Básica - estrutura robusta em preto',
   },
   {
     src: '/trailer-3.jpg',
-    alt: 'Jet ski montado em carreta na marina',
+    alt: 'Carreta JVC Premium Padrão - acabamento preto e branco',
+  },
+  {
+    src: '/trailer-4.jpg',
+    alt: 'Carreta JVC Fibra - modelo em fibra de vidro',
   },
 ]
 

@@ -26,13 +26,13 @@ export default function Home() {
       <header className="fixed top-0 z-50 w-full border-b-4 border-primary bg-primary shadow-md">
         <div className="container mx-auto flex h-20 items-center justify-between px-4">
           <div className="flex items-center gap-4">
-            <div className="rounded-lg bg-background p-2 shadow-sm">
+            <div className="rounded-lg bg-background px-4 py-2 shadow-sm">
               <Image
                 src="/jvc-logo.png"
                 alt="JVC Carretas Logo"
-                width={100}
-                height={50}
-                className="h-12 w-auto"
+                width={120}
+                height={30}
+                className="h-auto w-28 object-contain"
               />
             </div>
             <span className="text-2xl font-bold text-primary-foreground">Carretas</span>
@@ -312,13 +312,13 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="grid gap-8 md:grid-cols-3">
             <div>
-              <div className="mb-4 flex items-center gap-3 rounded-lg bg-primary p-3 w-fit">
+              <div className="mb-4 flex items-center gap-3 rounded-lg bg-primary px-4 py-3 w-fit">
                 <Image
                   src="/jvc-logo.png"
                   alt="JVC Carretas Logo"
-                  width={100}
-                  height={50}
-                  className="h-10 w-auto"
+                  width={120}
+                  height={30}
+                  className="h-auto w-24 object-contain"
                 />
                 <span className="text-xl font-bold text-primary-foreground">Carretas</span>
               </div>

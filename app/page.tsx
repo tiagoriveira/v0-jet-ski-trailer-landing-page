@@ -23,21 +23,24 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="fixed top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-        <div className="container mx-auto flex h-16 items-center justify-between px-4">
-          <div className="flex items-center gap-3">
-            <Image
-              src="/jvc-logo.png"
-              alt="JVC Carretas Logo"
-              width={80}
-              height={40}
-              className="h-10 w-auto"
-            />
-            <span className="text-xl font-bold text-foreground">Carretas</span>
+      <header className="fixed top-0 z-50 w-full border-b-4 border-primary bg-primary shadow-md">
+        <div className="container mx-auto flex h-20 items-center justify-between px-4">
+          <div className="flex items-center gap-4">
+            <div className="rounded-lg bg-background p-2 shadow-sm">
+              <Image
+                src="/jvc-logo.png"
+                alt="JVC Carretas Logo"
+                width={100}
+                height={50}
+                className="h-12 w-auto"
+              />
+            </div>
+            <span className="text-2xl font-bold text-primary-foreground">Carretas</span>
           </div>
           <Button
             onClick={scrollToForm}
-            className="bg-primary text-primary-foreground hover:bg-primary/90"
+            size="lg"
+            className="bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-lg"
           >
             Solicitar Orçamento
           </Button>
@@ -45,7 +48,7 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden bg-secondary pt-16">
+      <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden bg-secondary pt-20">
         <div className="absolute inset-0">
           <Image
             src="/hero-trailer.jpg"
@@ -305,19 +308,19 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-border bg-background py-12">
+      <footer className="border-t-4 border-primary bg-background py-12">
         <div className="container mx-auto px-4">
           <div className="grid gap-8 md:grid-cols-3">
             <div>
-              <div className="mb-4 flex items-center gap-3">
+              <div className="mb-4 flex items-center gap-3 rounded-lg bg-primary p-3 w-fit">
                 <Image
                   src="/jvc-logo.png"
                   alt="JVC Carretas Logo"
-                  width={80}
-                  height={40}
+                  width={100}
+                  height={50}
                   className="h-10 w-auto"
                 />
-                <span className="text-xl font-bold text-foreground">Carretas</span>
+                <span className="text-xl font-bold text-primary-foreground">Carretas</span>
               </div>
               <p className="text-muted-foreground">
                 Carretas premium para jet ski. Qualidade e durabilidade em cada

@@ -24,32 +24,21 @@ export default function Home() {
     <div className="min-h-screen bg-background">
       {/* Header */}
       <header className="fixed top-0 z-50 w-full border-b-4 border-primary bg-primary shadow-md">
-        <div className="container mx-auto flex h-20 items-center justify-between gap-3 px-4">
-          <div className="flex items-center gap-2 sm:gap-4">
-            <div className="rounded-lg bg-background px-3 py-2 shadow-sm sm:px-4">
-              <Image
-                src="/jvc-logo.png"
-                alt="JVC Carretas Logo"
-                width={120}
-                height={30}
-                className="h-auto w-20 object-contain sm:w-28"
-              />
-            </div>
-            <span className="text-lg font-bold text-primary-foreground sm:text-2xl">Carretas</span>
+        <div className="container mx-auto flex h-20 items-center justify-center px-4">
+          <div className="rounded-lg bg-background px-4 py-2 shadow-sm sm:px-6">
+            <Image
+              src="/jvc-logo.png"
+              alt="JVC Carretas Logo"
+              width={140}
+              height={35}
+              className="h-auto w-24 object-contain sm:w-32"
+            />
           </div>
-          <Button
-            onClick={scrollToForm}
-            size="lg"
-            className="bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-lg text-sm sm:text-base px-3 sm:px-4"
-          >
-            <span className="hidden sm:inline">Solicitar Orçamento</span>
-            <span className="sm:hidden">Orçamento</span>
-          </Button>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden bg-secondary pt-20">
+      <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden bg-secondary pt-32">
         <div className="absolute inset-0">
           <Image
             src="/hero-trailer.jpg"
@@ -172,7 +161,35 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Gallery Section */}
+      {/* Video Section - Mobile */}
+      <section className="bg-muted py-12 md:hidden">
+        <div className="container mx-auto px-4">
+          <div className="mb-8 text-center">
+            <h2 className="mb-3 text-balance text-3xl font-bold text-foreground">
+              Veja nossas <span className="text-primary">carretas</span>
+            </h2>
+            <p className="text-pretty text-base text-muted-foreground">
+              Conheça a qualidade e os detalhes dos nossos produtos
+            </p>
+          </div>
+          <div className="mx-auto max-w-2xl">
+            <div className="relative aspect-video overflow-hidden rounded-lg bg-black shadow-xl">
+              <video
+                className="h-full w-full object-cover"
+                controls
+                playsInline
+                preload="metadata"
+                poster="/hero-trailer.jpg"
+              >
+                <source src="/trailer-video.mp4" type="video/mp4" />
+                Seu navegador não suporta a reprodução de vídeo.
+              </video>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Products Section */}
       <section className="bg-muted py-20">
         <div className="container mx-auto px-4">
           <div className="mb-12 text-center">
@@ -180,11 +197,96 @@ export default function Home() {
               Conheça nossos <span className="text-primary">produtos</span>
             </h2>
             <p className="mx-auto max-w-2xl text-pretty text-lg text-muted-foreground">
-              Veja de perto a qualidade e os detalhes que fazem nossas carretas
-              serem referência no mercado.
+              Oferecemos diferentes tipos de carretas para atender suas necessidades específicas
             </p>
           </div>
-          <TrailerGallery />
+
+          <div className="mb-16 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+            <Card className="border-primary/20 bg-card transition-all hover:shadow-xl hover:border-primary/40 hover:-translate-y-1">
+              <CardContent className="p-6">
+                <div className="mb-4 aspect-video relative overflow-hidden rounded-lg">
+                  <Image
+                    src="/trailer-4.jpg"
+                    alt="Carreta de Fibra"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <h3 className="mb-3 text-xl font-bold text-card-foreground">
+                  Carreta de Fibra
+                </h3>
+                <p className="text-pretty text-sm leading-relaxed text-muted-foreground">
+                  Fabricada em fibra de vidro reforçada, extremamente leve e resistente. Ideal para quem busca praticidade no manuseio e excelente durabilidade. Não enferruja e dispensa manutenção frequente.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-primary/20 bg-card transition-all hover:shadow-xl hover:border-primary/40 hover:-translate-y-1">
+              <CardContent className="p-6">
+                <div className="mb-4 aspect-video relative overflow-hidden rounded-lg">
+                  <Image
+                    src="/trailer-2.jpg"
+                    alt="Carreta Padrão"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <h3 className="mb-3 text-xl font-bold text-card-foreground">
+                  Carreta Padrão
+                </h3>
+                <p className="text-pretty text-sm leading-relaxed text-muted-foreground">
+                  Estrutura em aço carbono com pintura automotiva de alta qualidade. Oferece excelente custo-benefício com resistência adequada para uso em água doce. Perfeita para uso recreativo.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-primary/20 bg-card transition-all hover:shadow-xl hover:border-primary/40 hover:-translate-y-1">
+              <CardContent className="p-6">
+                <div className="mb-4 aspect-video relative overflow-hidden rounded-lg">
+                  <Image
+                    src="/trailer-3.jpg"
+                    alt="Carreta Premium"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <h3 className="mb-3 text-xl font-bold text-card-foreground">
+                  Carreta Premium
+                </h3>
+                <p className="text-pretty text-sm leading-relaxed text-muted-foreground">
+                  Aço reforçado com acabamento especial e componentes de primeira linha. Inclui detalhes cromados, rolamentos selados e pintura em duas camadas. Máxima qualidade e estética.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border-primary/20 bg-card transition-all hover:shadow-xl hover:border-primary/40 hover:-translate-y-1">
+              <CardContent className="p-6">
+                <div className="mb-4 aspect-video relative overflow-hidden rounded-lg">
+                  <Image
+                    src="/trailer-1.jpg"
+                    alt="Carreta Galvanizada"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <h3 className="mb-3 text-xl font-bold text-card-foreground">
+                  Carreta Galvanizada
+                </h3>
+                <p className="text-pretty text-sm leading-relaxed text-muted-foreground">
+                  Galvanização a fogo para proteção máxima contra corrosão. Ideal para uso em água salgada e ambientes marinhos agressivos. A opção mais durável do mercado com garantia estendida.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+
+          <div className="hidden md:block">
+            <div className="mb-8 text-center">
+              <h3 className="mb-3 text-2xl font-bold text-foreground">
+                Galeria de Imagens
+              </h3>
+            </div>
+            <TrailerGallery />
+          </div>
         </div>
       </section>
 

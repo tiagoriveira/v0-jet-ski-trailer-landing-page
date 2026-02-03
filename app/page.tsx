@@ -42,7 +42,7 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden bg-secondary pt-20">
+      <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden bg-secondary pt-40">
         <div className="absolute inset-0">
           <Image
             src="/hero-trailer.jpg"
@@ -106,7 +106,7 @@ export default function Home() {
               <span className="text-foreground">JVC Carretas</span>?
             </h2>
             <p className="mx-auto max-w-2xl text-pretty text-lg text-muted-foreground">
-              Mais de 15 anos de experiência fabricando reboques personalizados com equipes dedicas no planejamento e produç~~ao!.
+              Mais de 15 anos de experiência fabricando reboques personalizados com equipes dedicadas no planejamento e produção.
             </p>
           </div>
 

@@ -42,7 +42,7 @@ export default function Home() {
       </header>
 
       {/* Hero Section */}
-      <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden bg-secondary pt-20">
+      <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden bg-secondary pt-40">
         <div className="absolute inset-0">
           <Image
             src="/hero-trailer.jpg"

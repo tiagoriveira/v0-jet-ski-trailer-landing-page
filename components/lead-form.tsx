@@ -196,7 +196,7 @@ export function LeadForm() {
               <SelectContent>
                 <SelectItem value="fibra">Carreta de Fibra</SelectItem>
                 <SelectItem value="padrao">Carreta Padrão</SelectItem>
-                <SelectItem value="premium">Carreta Premium</SelectItem>
+                <SelectItem value="premium">Carreta Premium Personalizada</SelectItem>
                 <SelectItem value="galvanizada">Carreta Galvanizada</SelectItem>
               </SelectContent>
             </Select>

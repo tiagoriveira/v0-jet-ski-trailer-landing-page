@@ -54,36 +54,45 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-secondary/90 via-secondary/80 to-secondary" />
         </div>
 
-        <div className="container relative z-20 mx-auto px-4 text-center">
-          <h1 className="mb-6 text-balance text-4xl font-bold text-secondary-foreground drop-shadow-sm sm:text-5xl md:text-6xl lg:text-7xl">
-            Carretas Personalizadas para{' '}
-            <span className="text-primary drop-shadow-[0_2px_8px_rgba(255,255,0,0.3)]">Jet Ski</span>
-          </h1>
-          <p className="mx-auto mb-8 max-w-2xl text-pretty text-base text-secondary-foreground/90 drop-shadow-sm sm:text-lg md:text-xl">
-            Fabricação sob medida com galvanização a fogo, estrutura reforçada e
-            acabamento superior. A escolha para clientes exigentes.
-          </p>
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Button
-              onClick={scrollToForm}
-              size="lg"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_4px_12px_rgba(255,255,0,0.4)] hover:shadow-[0_6px_16px_rgba(255,255,0,0.5)] font-semibold text-base sm:text-lg px-6 sm:px-8"
-            >
-              Solicitar Orçamento Grátis
-            </Button>
-            <InstagramEmbed />
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-2 border-secondary-foreground/30 text-secondary-foreground hover:bg-secondary-foreground/10 bg-transparent backdrop-blur-sm font-semibold"
-              onClick={() =>
-                document
-                  .getElementById('diferenciais')
-                  ?.scrollIntoView({ behavior: 'smooth' })
-              }
-            >
-              Conhecer Diferenciais
-            </Button>
+        <div className="container relative z-20 mx-auto px-4">
+          <div className="grid lg:grid-cols-2 gap-8 items-center">
+            {/* Left Side - Text Content */}
+            <div className="text-center lg:text-left">
+              <h1 className="mb-6 text-balance text-4xl font-bold text-secondary-foreground drop-shadow-sm sm:text-5xl md:text-6xl">
+                Carretas Personalizadas para{' '}
+                <span className="text-primary drop-shadow-[0_2px_8px_rgba(255,255,0,0.3)]">Jet Ski</span>
+              </h1>
+              <p className="mb-8 max-w-2xl text-pretty text-base text-secondary-foreground/90 drop-shadow-sm sm:text-lg md:text-xl lg:mx-0 mx-auto">
+                Fabricação sob medida com galvanização a fogo, estrutura reforçada e
+                acabamento superior. A escolha para clientes exigentes.
+              </p>
+              <div className="flex flex-col items-center lg:items-start justify-center gap-4 sm:flex-row lg:justify-start">
+                <Button
+                  onClick={scrollToForm}
+                  size="lg"
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_4px_12px_rgba(255,255,0,0.4)] hover:shadow-[0_6px_16px_rgba(255,255,0,0.5)] font-semibold text-base sm:text-lg px-6 sm:px-8"
+                >
+                  Solicitar Orçamento Grátis
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-2 border-secondary-foreground/30 text-secondary-foreground hover:bg-secondary-foreground/10 bg-transparent backdrop-blur-sm font-semibold"
+                  onClick={() =>
+                    document
+                      .getElementById('diferenciais')
+                      ?.scrollIntoView({ behavior: 'smooth' })
+                  }
+                >
+                  Conhecer Diferenciais
+                </Button>
+              </div>
+            </div>
+
+            {/* Right Side - Instagram Embed */}
+            <div className="flex justify-center lg:justify-end">
+              <InstagramEmbed />
+            </div>
           </div>
         </div>
       </section>

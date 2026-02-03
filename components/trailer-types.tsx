@@ -12,7 +12,7 @@ const trailerTypes = [
     features: ['Estrutura em aço reforçado', 'Pintura eletrostática', 'Ótimo custo-benefício'],
   },
   {
-    name: 'Carreta Premium',
+    name: 'Carreta Premium Personalizada',
     description: 'O topo de linha em carretas personalizadas. Projeto exclusivo adaptado às suas necessidades específicas, com acabamento premium e componentes de primeira linha.',
     features: ['Projeto personalizado', 'Componentes premium', 'Acabamento diferenciado'],
   },

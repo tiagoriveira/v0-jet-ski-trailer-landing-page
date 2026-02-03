@@ -55,12 +55,12 @@ export default function Home() {
 
         <div className="container relative z-20 mx-auto px-4 text-center">
           <h1 className="mb-6 text-balance text-4xl font-bold text-secondary-foreground drop-shadow-sm sm:text-5xl md:text-6xl lg:text-7xl">
-            Carretas Premium para{' '}
+            Carretas Personalizadas para{' '}
             <span className="text-primary drop-shadow-[0_2px_8px_rgba(255,255,0,0.3)]">Jet Ski</span>
           </h1>
           <p className="mx-auto mb-8 max-w-2xl text-pretty text-base text-secondary-foreground/90 drop-shadow-sm sm:text-lg md:text-xl">
             Fabricação sob medida com galvanização a fogo, estrutura reforçada e
-            acabamento impecável. A escolha de quem exige qualidade.
+            acabamento superior. A escolha para clientes exigentes.
           </p>
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button
@@ -69,6 +69,20 @@ export default function Home() {
               className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_4px_12px_rgba(255,255,0,0.4)] hover:shadow-[0_6px_16px_rgba(255,255,0,0.5)] font-semibold text-base sm:text-lg px-6 sm:px-8"
             >
               Solicitar Orçamento Grátis
+            </Button>
+            <Button
+              asChild
+              size="lg"
+              variant="outline"
+              className="border-2 border-secondary-foreground/30 text-secondary-foreground hover:bg-secondary-foreground/10 bg-transparent backdrop-blur-sm font-semibold"
+            >
+              <a
+                href="https://www.instagram.com/jvccarretas/reel/DBZp6-exrq4/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Assistir Vídeo
+              </a>
             </Button>
             <Button
               size="lg"
@@ -95,8 +109,7 @@ export default function Home() {
               <span className="text-foreground">JVC Carretas</span>?
             </h2>
             <p className="mx-auto max-w-2xl text-pretty text-lg text-muted-foreground">
-              Mais de 15 anos de experiência fabricando carretas premium para
-              os clientes mais exigentes do Brasil.
+              Mais de 15 anos de experiência fabricando reboques personalizados com equipes dedicas no planejamento e produç~~ao!.
             </p>
           </div>
 

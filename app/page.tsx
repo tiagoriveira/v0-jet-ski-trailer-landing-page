@@ -106,7 +106,7 @@ export default function Home() {
               <span className="text-foreground">JVC Carretas</span>?
             </h2>
             <p className="mx-auto max-w-2xl text-pretty text-lg text-muted-foreground">
-              Mais de 15 anos de experiência fabricando reboques personalizados com equipes dedicas no planejamento e produç~~ao!.
+              Mais de 15 anos de experiência fabricando reboques personalizados com equipes dedicadas no planejamento e produção.
             </p>
           </div>
 

@@ -3,6 +3,10 @@
 import Image from 'next/image'
 import { LeadForm } from '@/components/lead-form'
 import { TrailerGallery } from '@/components/trailer-gallery'
+import { ReviewsCarousel } from '@/components/reviews-carousel'
+import { TrailerTypes } from '@/components/trailer-types'
+import { InstagramFloat } from '@/components/instagram-float'
+import { InstagramEmbed } from '@/components/instagram-embed'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import {
@@ -10,9 +14,6 @@ import {
   Wrench,
   Truck,
   Award,
-  Instagram,
-  Facebook,
-  Mail,
 } from 'lucide-react'
 
 export default function Home() {
@@ -22,29 +23,21 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Instagram Float Button */}
+      <InstagramFloat />
       {/* Header */}
       <header className="fixed top-0 z-50 w-full border-b-4 border-primary bg-primary shadow-md">
-        <div className="container mx-auto flex h-20 items-center justify-between gap-3 px-4">
-          <div className="flex items-center gap-2 sm:gap-4">
-            <div className="rounded-lg bg-background px-3 py-2 shadow-sm sm:px-4">
-              <Image
-                src="/jvc-logo.png"
-                alt="JVC Carretas Logo"
-                width={120}
-                height={30}
-                className="h-auto w-20 object-contain sm:w-28"
-              />
-            </div>
-            <span className="text-lg font-bold text-primary-foreground sm:text-2xl">Carretas</span>
+        <div className="container mx-auto flex h-20 items-center justify-center gap-2 px-4 sm:gap-4">
+          <div className="rounded-lg bg-background px-3 py-2 shadow-sm sm:px-4">
+            <Image
+              src="/jvc-logo.png"
+              alt="JVC Carretas Logo"
+              width={120}
+              height={30}
+              className="h-auto w-20 object-contain sm:w-28"
+            />
           </div>
-          <Button
-            onClick={scrollToForm}
-            size="lg"
-            className="bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-lg text-sm sm:text-base px-3 sm:px-4"
-          >
-            <span className="hidden sm:inline">Solicitar Orçamento</span>
-            <span className="sm:hidden">Orçamento</span>
-          </Button>
+          <span className="text-lg font-bold text-primary-foreground sm:text-2xl">Carretas</span>
         </div>
       </header>
 
@@ -61,14 +54,14 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-secondary/90 via-secondary/80 to-secondary" />
         </div>
 
-        <div className="container relative z-10 mx-auto px-4 text-center">
+        <div className="container relative z-20 mx-auto px-4 text-center">
           <h1 className="mb-6 text-balance text-4xl font-bold text-secondary-foreground drop-shadow-sm sm:text-5xl md:text-6xl lg:text-7xl">
-            Carretas Premium para{' '}
+            Carretas Personalizadas para{' '}
             <span className="text-primary drop-shadow-[0_2px_8px_rgba(255,255,0,0.3)]">Jet Ski</span>
           </h1>
           <p className="mx-auto mb-8 max-w-2xl text-pretty text-base text-secondary-foreground/90 drop-shadow-sm sm:text-lg md:text-xl">
             Fabricação sob medida com galvanização a fogo, estrutura reforçada e
-            acabamento impecável. A escolha de quem exige qualidade.
+            acabamento superior. A escolha para clientes exigentes.
           </p>
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button
@@ -78,6 +71,7 @@ export default function Home() {
             >
               Solicitar Orçamento Grátis
             </Button>
+            <InstagramEmbed />
             <Button
               size="lg"
               variant="outline"
@@ -100,19 +94,18 @@ export default function Home() {
           <div className="mb-12 text-center">
             <h2 className="mb-4 text-balance text-4xl font-bold text-foreground md:text-5xl">
               Por que escolher a{' '}
-              <span className="text-primary">JVC Carretas</span>?
+              <span className="text-foreground">JVC Carretas</span>?
             </h2>
             <p className="mx-auto max-w-2xl text-pretty text-lg text-muted-foreground">
-              Mais de 15 anos de experiência fabricando carretas premium para
-              os clientes mais exigentes do Brasil.
+              Mais de 15 anos de experiência fabricando reboques personalizados com equipes dedicas no planejamento e produç~~ao!.
             </p>
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            <Card className="border-primary/20 bg-card transition-all hover:shadow-xl hover:border-primary/40 hover:-translate-y-1">
+            <Card className="border-border bg-card transition-all hover:shadow-xl hover:border-foreground/20 hover:-translate-y-1">
               <CardContent className="flex flex-col items-center p-6 text-center">
-                <div className="mb-4 rounded-full bg-primary/20 p-4 shadow-md">
-                  <Shield className="h-10 w-10 text-primary" />
+                <div className="mb-4 rounded-full bg-foreground p-4 shadow-md">
+                  <Shield className="h-10 w-10 text-background" />
                 </div>
                 <h3 className="mb-3 text-xl font-bold text-card-foreground">
                   Galvanização a Fogo
@@ -124,10 +117,10 @@ export default function Home() {
               </CardContent>
             </Card>
 
-            <Card className="border-primary/20 bg-card transition-all hover:shadow-xl hover:border-primary/40 hover:-translate-y-1">
+            <Card className="border-border bg-card transition-all hover:shadow-xl hover:border-foreground/20 hover:-translate-y-1">
               <CardContent className="flex flex-col items-center p-6 text-center">
-                <div className="mb-4 rounded-full bg-primary/20 p-4 shadow-md">
-                  <Wrench className="h-10 w-10 text-primary" />
+                <div className="mb-4 rounded-full bg-foreground p-4 shadow-md">
+                  <Wrench className="h-10 w-10 text-background" />
                 </div>
                 <h3 className="mb-3 text-xl font-bold text-card-foreground">
                   Fabricação Sob Medida
@@ -139,10 +132,10 @@ export default function Home() {
               </CardContent>
             </Card>
 
-            <Card className="border-primary/20 bg-card transition-all hover:shadow-xl hover:border-primary/40 hover:-translate-y-1">
+            <Card className="border-border bg-card transition-all hover:shadow-xl hover:border-foreground/20 hover:-translate-y-1">
               <CardContent className="flex flex-col items-center p-6 text-center">
-                <div className="mb-4 rounded-full bg-primary/20 p-4 shadow-md">
-                  <Truck className="h-10 w-10 text-primary" />
+                <div className="mb-4 rounded-full bg-foreground p-4 shadow-md">
+                  <Truck className="h-10 w-10 text-background" />
                 </div>
                 <h3 className="mb-3 text-xl font-bold text-card-foreground">
                   Estrutura Reforçada
@@ -154,10 +147,10 @@ export default function Home() {
               </CardContent>
             </Card>
 
-            <Card className="border-primary/20 bg-card transition-all hover:shadow-xl hover:border-primary/40 hover:-translate-y-1">
+            <Card className="border-border bg-card transition-all hover:shadow-xl hover:border-foreground/20 hover:-translate-y-1">
               <CardContent className="flex flex-col items-center p-6 text-center">
-                <div className="mb-4 rounded-full bg-primary/20 p-4 shadow-md">
-                  <Award className="h-10 w-10 text-primary" />
+                <div className="mb-4 rounded-full bg-foreground p-4 shadow-md">
+                  <Award className="h-10 w-10 text-background" />
                 </div>
                 <h3 className="mb-3 text-xl font-bold text-card-foreground">
                   Garantia Estendida
@@ -172,14 +165,30 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Trailer Types Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="mb-12 text-center">
+            <h2 className="mb-4 text-balance text-4xl font-bold text-foreground md:text-5xl">
+              Tipos de <span className="text-foreground">Carretas</span>
+            </h2>
+            <p className="mx-auto max-w-2xl text-pretty text-lg text-muted-foreground">
+              Escolha o modelo ideal para suas necessidades. Cada tipo de carreta
+              é projetado para oferecer máxima performance e durabilidade.
+            </p>
+          </div>
+          <TrailerTypes />
+        </div>
+      </section>
+
       {/* Gallery Section */}
       <section className="bg-muted py-20">
         <div className="container mx-auto px-4">
           <div className="mb-12 text-center">
             <h2 className="mb-4 text-balance text-4xl font-bold text-foreground md:text-5xl">
-              Conheça nossos <span className="text-primary">produtos</span>
+              Conheça nossos <span className="text-foreground">produtos</span>
             </h2>
-            <p className="mx-auto max-w-2xl text-pretty text-lg text-muted-foreground">
+            <p className="mx-auto max-w-2xl text-pretty text-lg text-foreground">
               Veja de perto a qualidade e os detalhes que fazem nossas carretas
               serem referência no mercado.
             </p>
@@ -193,15 +202,20 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="mb-12 text-center">
             <h2 className="mb-4 text-balance text-4xl font-bold text-foreground md:text-5xl">
-              O que dizem nossos <span className="text-primary">clientes</span>
+              Avaliações do <span className="text-foreground">Google</span>
             </h2>
-            <p className="mb-6 text-pretty text-lg text-muted-foreground">
-              Confira as avaliações reais dos nossos clientes
+            <p className="mb-8 text-pretty text-lg text-muted-foreground">
+              Veja o que nossos clientes dizem sobre nossas carretas
             </p>
+          </div>
+
+          <ReviewsCarousel />
+
+          <div className="mt-8 text-center">
             <Button
               asChild
               size="lg"
-              className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_4px_12px_rgba(255,255,0,0.3)] hover:shadow-[0_6px_16px_rgba(255,255,0,0.4)] font-semibold"
+              className="bg-primary text-foreground hover:bg-primary/90 shadow-[0_4px_12px_rgba(255,255,0,0.3)] hover:shadow-[0_6px_16px_rgba(255,255,0,0.4)] font-semibold"
             >
               <a
                 href="https://share.google/U6QrhKBtDK0U62y7r"
@@ -219,68 +233,9 @@ export default function Home() {
                   <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
                   <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
                 </svg>
-                Ver Avaliações no Google
+                Ver Todas as Avaliações no Google
               </a>
             </Button>
-          </div>
-
-          <div className="grid gap-8 md:grid-cols-3">
-            <Card className="border-border bg-card">
-              <CardContent className="p-6">
-                <div className="mb-4 flex gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <span key={i} className="text-primary">
-                      ★
-                    </span>
-                  ))}
-                </div>
-                <p className="mb-4 text-pretty text-card-foreground">
-                  &ldquo;Qualidade excepcional! A carreta é extremamente robusta e o
-                  acabamento é impecável. Melhor investimento que fiz.&rdquo;
-                </p>
-                <p className="font-semibold text-foreground">
-                  Ricardo M. - São Paulo
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-border bg-card">
-              <CardContent className="p-6">
-                <div className="mb-4 flex gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <span key={i} className="text-primary">
-                      ★
-                    </span>
-                  ))}
-                </div>
-                <p className="mb-4 text-pretty text-card-foreground">
-                  &ldquo;Uso em água salgada há 2 anos e está como nova. A
-                  galvanização realmente faz diferença. Recomendo!&rdquo;
-                </p>
-                <p className="font-semibold text-foreground">
-                  Mariana S. - Rio de Janeiro
-                </p>
-              </CardContent>
-            </Card>
-
-            <Card className="border-border bg-card">
-              <CardContent className="p-6">
-                <div className="mb-4 flex gap-1">
-                  {[...Array(5)].map((_, i) => (
-                    <span key={i} className="text-primary">
-                      ★
-                    </span>
-                  ))}
-                </div>
-                <p className="mb-4 text-pretty text-card-foreground">
-                  &ldquo;Atendimento personalizado e produto sob medida. Ficou
-                  perfeito para meus 3 jet skis. Equipe muito profissional.&rdquo;
-                </p>
-                <p className="font-semibold text-foreground">
-                  Carlos A. - Florianópolis
-                </p>
-              </CardContent>
-            </Card>
           </div>
         </div>
       </section>
@@ -311,9 +266,9 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t-4 border-primary bg-background py-12">
         <div className="container mx-auto px-4">
-          <div className="grid gap-8 md:grid-cols-3">
-            <div>
-              <div className="mb-4 flex items-center gap-3 rounded-lg bg-primary px-4 py-3 w-fit">
+          <div className="flex justify-center">
+            <div className="text-center">
+              <div className="mb-4 flex items-center justify-center gap-3 rounded-lg bg-primary px-4 py-3">
                 <Image
                   src="/jvc-logo.png"
                   alt="JVC Carretas Logo"
@@ -328,51 +283,10 @@ export default function Home() {
                 detalhe.
               </p>
             </div>
-
-            <div>
-              <h3 className="mb-4 font-semibold text-foreground">Contato</h3>
-              <div className="space-y-2 text-muted-foreground">
-                <p>WhatsApp: (11) 99999-9999</p>
-                <p>contato@jvccarretas.com.br</p>
-              </div>
-            </div>
-
-            <div>
-              <h3 className="mb-4 font-semibold text-foreground">
-                Redes Sociais
-              </h3>
-              <div className="flex gap-4">
-                <a
-                  href="https://instagram.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-full bg-primary/10 p-2 text-primary transition-colors hover:bg-primary/20"
-                  aria-label="Instagram"
-                >
-                  <Instagram className="h-5 w-5" />
-                </a>
-                <a
-                  href="https://facebook.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-full bg-primary/10 p-2 text-primary transition-colors hover:bg-primary/20"
-                  aria-label="Facebook"
-                >
-                  <Facebook className="h-5 w-5" />
-                </a>
-                <a
-                  href="mailto:contato@jvccarretas.com.br"
-                  className="rounded-full bg-primary/10 p-2 text-primary transition-colors hover:bg-primary/20"
-                  aria-label="Email"
-                >
-                  <Mail className="h-5 w-5" />
-                </a>
-              </div>
-            </div>
           </div>
 
           <div className="mt-8 border-t border-border pt-8 text-center text-sm text-muted-foreground">
-            <p>&copy; 2025 JVC Carretas. Todos os direitos reservados.</p>
+            <p>&copy; 2026 JVC Carretas. Todos os direitos reservados.</p>
           </div>
         </div>
       </footer>

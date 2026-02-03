@@ -194,10 +194,10 @@ export function LeadForm() {
                 <SelectValue placeholder="Selecione o tipo" />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="single">Single (1 Jet Ski)</SelectItem>
-                <SelectItem value="double">Double (2 Jet Skis)</SelectItem>
-                <SelectItem value="triple">Triple (3 Jet Skis)</SelectItem>
-                <SelectItem value="custom">Personalizada</SelectItem>
+                <SelectItem value="fibra">Carreta de Fibra</SelectItem>
+                <SelectItem value="padrao">Carreta Padrão</SelectItem>
+                <SelectItem value="premium">Carreta Premium</SelectItem>
+                <SelectItem value="galvanizada">Carreta Galvanizada</SelectItem>
               </SelectContent>
             </Select>
           </div>

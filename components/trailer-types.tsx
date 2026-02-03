@@ -27,7 +27,7 @@ export function TrailerTypes() {
   return (
     <div className="grid gap-6 md:grid-cols-2">
       {trailerTypes.map((type, index) => (
-        <Card key={index} className="border-primary/20 bg-card transition-all hover:shadow-xl hover:border-primary/40">
+        <Card key={index} className="border-border bg-card transition-all hover:shadow-xl hover:border-foreground/20">
           <CardContent className="p-6">
             <h3 className="mb-3 text-2xl font-bold text-card-foreground">
               {type.name}
@@ -38,7 +38,7 @@ export function TrailerTypes() {
             <ul className="space-y-2">
               {type.features.map((feature, idx) => (
                 <li key={idx} className="flex items-start gap-2 text-sm text-foreground">
-                  <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-primary/20 text-primary">
+                  <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-foreground/90 text-background">
                     ✓
                   </span>
                   <span>{feature}</span>

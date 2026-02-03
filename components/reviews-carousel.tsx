@@ -53,14 +53,14 @@ export function ReviewsCarousel() {
           {reviews.map((review, index) => (
             <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
               <div 
-                className="relative aspect-[3/4] overflow-hidden rounded-lg bg-muted cursor-pointer transition-transform hover:scale-105"
+                className="relative h-[400px] overflow-hidden rounded-lg bg-muted cursor-pointer transition-transform hover:scale-105"
                 onClick={() => setSelectedImage(review.src)}
               >
                 <Image
                   src={review.src}
                   alt={review.alt}
                   fill
-                  className="object-cover"
+                  className="object-contain"
                   priority={index < 3}
                 />
               </div>

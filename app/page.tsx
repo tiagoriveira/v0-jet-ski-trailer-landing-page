@@ -26,42 +26,31 @@ export default function Home() {
       <InstagramFloat />
       {/* Header */}
       <header className="fixed top-0 z-50 w-full border-b-4 border-primary bg-primary shadow-md">
-        <div className="container mx-auto flex h-20 items-center justify-between gap-3 px-4">
-          <div className="flex items-center gap-2 sm:gap-4">
-            <div className="rounded-lg bg-background px-3 py-2 shadow-sm sm:px-4">
-              <Image
-                src="/jvc-logo.png"
-                alt="JVC Carretas Logo"
-                width={120}
-                height={30}
-                className="h-auto w-20 object-contain sm:w-28"
-              />
-            </div>
-            <span className="text-lg font-bold text-primary-foreground sm:text-2xl">Carretas</span>
+        <div className="container mx-auto flex h-20 items-center justify-center gap-2 px-4 sm:gap-4">
+          <div className="rounded-lg bg-background px-3 py-2 shadow-sm sm:px-4">
+            <Image
+              src="/jvc-logo.png"
+              alt="JVC Carretas Logo"
+              width={120}
+              height={30}
+              className="h-auto w-20 object-contain sm:w-28"
+            />
           </div>
-          <Button
-            onClick={scrollToForm}
-            size="lg"
-            className="bg-secondary text-secondary-foreground hover:bg-secondary/90 shadow-lg text-sm sm:text-base px-3 sm:px-4"
-          >
-            <span className="hidden sm:inline">Solicitar Orçamento</span>
-            <span className="sm:hidden">Orçamento</span>
-          </Button>
+          <span className="text-lg font-bold text-primary-foreground sm:text-2xl">Carretas</span>
         </div>
       </header>
 
       {/* Hero Section */}
       <section className="relative flex min-h-[90vh] items-center justify-center overflow-hidden bg-secondary pt-20">
         <div className="absolute inset-0">
-          <div className="absolute inset-0 z-0">
-            <iframe
-              src="https://www.instagram.com/reel/DBZp6-exrq4/embed"
-              className="h-full w-full object-cover opacity-30 pointer-events-none"
-              style={{ border: 'none', overflow: 'hidden' }}
-              allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-            />
-          </div>
-          <div className="absolute inset-0 bg-gradient-to-b from-secondary/90 via-secondary/80 to-secondary z-10" />
+          <Image
+            src="/hero-trailer.jpg"
+            alt="Carreta premium JVC para jet ski"
+            fill
+            className="object-cover opacity-20"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-secondary/90 via-secondary/80 to-secondary" />
         </div>
 
         <div className="container relative z-20 mx-auto px-4 text-center">
@@ -103,7 +92,7 @@ export default function Home() {
           <div className="mb-12 text-center">
             <h2 className="mb-4 text-balance text-4xl font-bold text-foreground md:text-5xl">
               Por que escolher a{' '}
-              <span className="text-primary">JVC Carretas</span>?
+              <span className="text-foreground">JVC Carretas</span>?
             </h2>
             <p className="mx-auto max-w-2xl text-pretty text-lg text-muted-foreground">
               Mais de 15 anos de experiência fabricando carretas premium para
@@ -112,7 +101,7 @@ export default function Home() {
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            <Card className="border-primary/20 bg-card transition-all hover:shadow-xl hover:border-primary/40 hover:-translate-y-1">
+            <Card className="border-border bg-card transition-all hover:shadow-xl hover:border-foreground/20 hover:-translate-y-1">
               <CardContent className="flex flex-col items-center p-6 text-center">
                 <div className="mb-4 rounded-full bg-foreground p-4 shadow-md">
                   <Shield className="h-10 w-10 text-background" />
@@ -127,7 +116,7 @@ export default function Home() {
               </CardContent>
             </Card>
 
-            <Card className="border-primary/20 bg-card transition-all hover:shadow-xl hover:border-primary/40 hover:-translate-y-1">
+            <Card className="border-border bg-card transition-all hover:shadow-xl hover:border-foreground/20 hover:-translate-y-1">
               <CardContent className="flex flex-col items-center p-6 text-center">
                 <div className="mb-4 rounded-full bg-foreground p-4 shadow-md">
                   <Wrench className="h-10 w-10 text-background" />
@@ -142,7 +131,7 @@ export default function Home() {
               </CardContent>
             </Card>
 
-            <Card className="border-primary/20 bg-card transition-all hover:shadow-xl hover:border-primary/40 hover:-translate-y-1">
+            <Card className="border-border bg-card transition-all hover:shadow-xl hover:border-foreground/20 hover:-translate-y-1">
               <CardContent className="flex flex-col items-center p-6 text-center">
                 <div className="mb-4 rounded-full bg-foreground p-4 shadow-md">
                   <Truck className="h-10 w-10 text-background" />
@@ -157,7 +146,7 @@ export default function Home() {
               </CardContent>
             </Card>
 
-            <Card className="border-primary/20 bg-card transition-all hover:shadow-xl hover:border-primary/40 hover:-translate-y-1">
+            <Card className="border-border bg-card transition-all hover:shadow-xl hover:border-foreground/20 hover:-translate-y-1">
               <CardContent className="flex flex-col items-center p-6 text-center">
                 <div className="mb-4 rounded-full bg-foreground p-4 shadow-md">
                   <Award className="h-10 w-10 text-background" />
@@ -180,7 +169,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="mb-12 text-center">
             <h2 className="mb-4 text-balance text-4xl font-bold text-foreground md:text-5xl">
-              Tipos de <span className="text-primary">Carretas</span>
+              Tipos de <span className="text-foreground">Carretas</span>
             </h2>
             <p className="mx-auto max-w-2xl text-pretty text-lg text-muted-foreground">
               Escolha o modelo ideal para suas necessidades. Cada tipo de carreta

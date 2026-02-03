@@ -6,6 +6,7 @@ import { TrailerGallery } from '@/components/trailer-gallery'
 import { ReviewsCarousel } from '@/components/reviews-carousel'
 import { TrailerTypes } from '@/components/trailer-types'
 import { InstagramFloat } from '@/components/instagram-float'
+import { InstagramEmbed } from '@/components/instagram-embed'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import {
@@ -70,20 +71,7 @@ export default function Home() {
             >
               Solicitar Orçamento Grátis
             </Button>
-            <Button
-              asChild
-              size="lg"
-              variant="outline"
-              className="border-2 border-secondary-foreground/30 text-secondary-foreground hover:bg-secondary-foreground/10 bg-transparent backdrop-blur-sm font-semibold"
-            >
-              <a
-                href="https://www.instagram.com/jvccarretas/reel/DBZp6-exrq4/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Assistir Vídeo
-              </a>
-            </Button>
+            <InstagramEmbed />
             <Button
               size="lg"
               variant="outline"
@@ -214,7 +202,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="mb-12 text-center">
             <h2 className="mb-4 text-balance text-4xl font-bold text-foreground md:text-5xl">
-              Avaliações do <span className="text-primary">Google</span>
+              Avaliações do <span className="text-foreground">Google</span>
             </h2>
             <p className="mb-8 text-pretty text-lg text-muted-foreground">
               Veja o que nossos clientes dizem sobre nossas carretas

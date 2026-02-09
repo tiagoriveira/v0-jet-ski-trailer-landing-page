@@ -101,9 +101,17 @@ async function sendToTelegram(data: LeadFormData) {
 }
 
 export async function submitLead(data: LeadFormData) {
+  console.log('[v0] Starting submitLead:', data)
+  
   try {
-    console.log('[v0] Submitting lead to Supabase:', data)
+    // Validate Supabase client
+    if (!supabase) {
+      console.error('[v0] Supabase client not initialized')
+      return { success: false, error: 'Database connection error' }
+    }
 
+    console.log('[v0] Inserting into Supabase...')
+    
     const { data: insertedData, error } = await supabase
       .from('leads')
       .insert([
@@ -121,10 +129,13 @@ export async function submitLead(data: LeadFormData) {
 
     if (error) {
       console.error('[v0] Supabase error:', error)
-      throw error
+      return { 
+        success: false, 
+        error: `Database error: ${error.message}` 
+      }
     }
 
-    console.log('[v0] Lead submitted to Supabase successfully:', insertedData)
+    console.log('[v0] Lead saved successfully:', insertedData)
 
     // Send to Meta and Telegram in parallel (non-blocking)
     Promise.all([
@@ -134,7 +145,7 @@ export async function submitLead(data: LeadFormData) {
 
     return { success: true }
   } catch (error) {
-    console.error('[v0] Error submitting lead:', error)
+    console.error('[v0] Unexpected error:', error)
     return {
       success: false,
       error: error instanceof Error ? error.message : 'Failed to submit form',

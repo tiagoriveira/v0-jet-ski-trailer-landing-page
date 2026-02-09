@@ -12,6 +12,74 @@ export interface LeadFormData {
   timeframe: string
 }
 
+// Send lead to Meta Conversions API
+async function sendToMetaConversionsAPI(data: LeadFormData) {
+  try {
+    const response = await fetch('https://graph.facebook.com/v18.0/442885398563869/conversions', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        data: [
+          {
+            event_name: 'Lead',
+            event_time: Math.floor(Date.now() / 1000),
+            event_id: `${Date.now()}-${Math.random()}`,
+            event_source_url: process.env.NEXT_PUBLIC_SITE_URL || 'https://jvccarretas.com',
+            user_data: {
+              em: Buffer.from(data.email).toString('hex'),
+              ph: data.phone.replace(/\D/g, ''),
+              fn: data.name.split(' ')[0].toLowerCase(),
+              ln: data.name.split(' ').slice(1).join(' ').toLowerCase(),
+              ct: data.city.toLowerCase(),
+            },
+            custom_data: {
+              value: '1',
+              currency: 'BRL',
+              content_name: `${data.trailerType} - ${data.quantity} unidades`,
+            },
+          },
+        ],
+        access_token: process.env.FACEBOOK_CONVERSIONS_API_TOKEN,
+      }),
+    })
+
+    if (!response.ok) {
+      console.error('[v0] Meta Conversions API error:', await response.text())
+    }
+  } catch (error) {
+    console.error('[v0] Meta Conversions API failed:', error)
+  }
+}
+
+// Send lead to Telegram
+async function sendToTelegram(data: LeadFormData) {
+  try {
+    const message = `
+📩 <b>NOVO LEAD!</b>
+
+👤 <b>Nome:</b> ${data.name}
+📧 <b>Email:</b> ${data.email}
+📱 <b>WhatsApp:</b> ${data.phone}
+🏙️ <b>Cidade:</b> ${data.city}
+🚗 <b>Tipo de Carreta:</b> ${data.trailerType}
+📦 <b>Quantidade:</b> ${data.quantity}
+⏰ <b>Prazo:</b> ${data.timeframe}
+    `
+
+    await fetch(`https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        chat_id: process.env.TELEGRAM_CHAT_ID,
+        text: message,
+        parse_mode: 'HTML',
+      }),
+    })
+  } catch (error) {
+    console.error('[v0] Telegram send failed:', error)
+  }
+}
+
 export async function submitLead(data: LeadFormData) {
   try {
     console.log('[v0] Submitting lead to Supabase:', data)
@@ -37,6 +105,13 @@ export async function submitLead(data: LeadFormData) {
     }
 
     console.log('[v0] Lead submitted to Supabase successfully:', insertedData)
+
+    // Send to Meta and Telegram in parallel (non-blocking)
+    Promise.all([
+      sendToMetaConversionsAPI(data),
+      sendToTelegram(data),
+    ]).catch(err => console.error('[v0] External integrations error:', err))
+
     return { success: true }
   } catch (error) {
     console.error('[v0] Error submitting lead:', error)

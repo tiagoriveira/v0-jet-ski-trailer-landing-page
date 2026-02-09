@@ -15,7 +15,15 @@ export interface LeadFormData {
 // Send lead to Meta Conversions API
 async function sendToMetaConversionsAPI(data: LeadFormData) {
   try {
-    const response = await fetch('https://graph.facebook.com/v18.0/442885398563869/conversions', {
+    const pixelId = '442885398563869'
+    const token = process.env.FACEBOOK_CONVERSIONS_API_TOKEN
+    
+    if (!token) {
+      console.error('[v0] Meta token missing')
+      return
+    }
+
+    const response = await fetch(`https://graph.facebook.com/v18.0/${pixelId}/conversions`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -39,21 +47,29 @@ async function sendToMetaConversionsAPI(data: LeadFormData) {
             },
           },
         ],
-        access_token: process.env.FACEBOOK_CONVERSIONS_API_TOKEN,
+        access_token: token,
       }),
     })
 
     if (!response.ok) {
-      console.error('[v0] Meta Conversions API error:', await response.text())
+      console.error('[v0] Meta API error:', await response.text())
     }
   } catch (error) {
-    console.error('[v0] Meta Conversions API failed:', error)
+    console.error('[v0] Meta API failed:', error)
   }
 }
 
 // Send lead to Telegram
 async function sendToTelegram(data: LeadFormData) {
   try {
+    const token = process.env.TELEGRAM_BOT_TOKEN
+    const chatId = process.env.TELEGRAM_CHAT_ID
+
+    if (!token || !chatId) {
+      console.error('[v0] Telegram config missing')
+      return
+    }
+
     const message = `
 📩 <b>NOVO LEAD!</b>
 
@@ -66,17 +82,21 @@ async function sendToTelegram(data: LeadFormData) {
 ⏰ <b>Prazo:</b> ${data.timeframe}
     `
 
-    await fetch(`https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendMessage`, {
+    const response = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        chat_id: process.env.TELEGRAM_CHAT_ID,
+        chat_id: chatId,
         text: message,
         parse_mode: 'HTML',
       }),
     })
+
+    if (!response.ok) {
+      console.error('[v0] Telegram error:', await response.text())
+    }
   } catch (error) {
-    console.error('[v0] Telegram send failed:', error)
+    console.error('[v0] Telegram failed:', error)
   }
 }
 

@@ -1,20 +1,32 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { VideoModal } from './video-modal'
 
 export function InstagramEmbed() {
+  const [isMobile, setIsMobile] = useState(false)
+
   useEffect(() => {
-    // Carregar o script do Instagram para processar embeds
-    if (window.instgrm) {
+    // Detectar mobile
+    setIsMobile(/iPhone|iPad|iPod|Android/i.test(navigator.userAgent))
+
+    // Carregar o script do Instagram para processar embeds (desktop)
+    if (!isMobile && window.instgrm) {
       window.instgrm.Embeds.process()
-    } else {
+    } else if (!isMobile) {
       const script = document.createElement('script')
       script.src = 'https://www.instagram.com/embed.js'
       script.async = true
       document.body.appendChild(script)
     }
-  }, [])
+  }, [isMobile])
 
+  // Mobile: Modal com vídeo
+  if (isMobile) {
+    return <VideoModal />
+  }
+
+  // Desktop: Embed normal
   return (
     <div className="w-full max-w-md mx-auto rounded-lg overflow-hidden bg-white shadow-2xl">
       <blockquote 

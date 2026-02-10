@@ -113,16 +113,16 @@ export async function submitLead(data: LeadFormData) {
     console.log('[v0] Inserting into Supabase...')
     
     const { data: insertedData, error } = await supabase
-      .from('leads')
+      .from('lead_submissions')
       .insert([
         {
-          name: data.name,
+          nome_completo: data.name,
           email: data.email,
-          phone: data.phone,
-          city: data.city,
-          trailer_type: data.trailerType,
-          quantity: data.quantity,
-          timeframe: data.timeframe,
+          whatsapp: data.phone,
+          cidade: data.city,
+          tipo_carreta: data.trailerType,
+          quantidade: parseInt(data.quantity) || 1,
+          prazo_interesse: data.timeframe,
         },
       ])
       .select()

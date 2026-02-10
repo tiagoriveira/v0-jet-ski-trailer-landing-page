@@ -35,7 +35,6 @@ export default function Home() {
               width={120}
               height={30}
               className="h-auto w-20 object-contain sm:w-28"
-              style={{ width: 'auto', height: 'auto' }}
             />
           </div>
           <span className="text-lg font-bold text-primary-foreground sm:text-2xl">Carretas</span>
@@ -285,7 +284,6 @@ export default function Home() {
                   width={120}
                   height={30}
                   className="h-auto w-24 object-contain"
-                  style={{ width: 'auto', height: 'auto' }}
                 />
                 <span className="text-xl font-bold text-primary-foreground">Carretas</span>
               </div>

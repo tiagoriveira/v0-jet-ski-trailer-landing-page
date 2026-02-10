@@ -38,15 +38,26 @@ export function VideoModal() {
 
             {/* Video Container */}
             <div className="aspect-video bg-black rounded-lg overflow-hidden">
-              <iframe
-                width="100%"
-                height="100%"
-                src="https://www.instagram.com/p/DBZp6-exrq4/embed"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="w-full h-full"
-              />
+              <video
+                controls
+                autoPlay
+                playsInline
+                className="w-full h-full object-contain"
+                poster="/trailer-thumbnail.jpg"
+              >
+                <source src="/DIFERENCIAIS DA JVC CARRETAS ! 👆🏻 CONFIRA ✅#reels #jetski #carretas #explorepage #explore #vir.mp4" type="video/mp4" />
+                <p className="text-white p-4">
+                  Seu navegador não suporta vídeo HTML5.{' '}
+                  <a
+                    href="https://www.instagram.com/p/DBZp6-exrq4/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline"
+                  >
+                    Ver no Instagram
+                  </a>
+                </p>
+              </video>
             </div>
           </div>
         </div>

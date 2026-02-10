@@ -128,14 +128,14 @@ export async function submitLead(data: LeadFormData) {
       .select()
 
     if (error) {
-      console.error('[v0] Supabase error:', error)
+      console.error('[v0] Supabase error detail:', JSON.stringify(error, null, 2))
       return { 
         success: false, 
-        error: `Database error: ${error.message}` 
+        error: `Database error: ${error.message || 'Unknown database error'}` 
       }
     }
 
-    console.log('[v0] Lead saved successfully:', insertedData)
+    console.log('[v0] Lead saved successfully')
 
     // Send to Meta and Telegram in parallel (non-blocking)
     Promise.all([

@@ -165,7 +165,7 @@ export default function Home() {
                   Garantia Estendida
                 </h3>
                 <p className="text-pretty text-sm leading-relaxed text-muted-foreground">
-                  2 anos de garantia total contra defeitos de fabricação e
+                  3 meses de garantia total contra defeitos de fabricação e
                   suporte técnico vitalício
                 </p>
               </CardContent>

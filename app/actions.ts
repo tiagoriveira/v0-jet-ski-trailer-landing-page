@@ -17,7 +17,7 @@ async function sendToMetaConversionsAPI(data: LeadFormData) {
   try {
     const pixelId = '7132608246836727'
     const token = process.env.FACEBOOK_CONVERSIONS_API_TOKEN
-    
+
     if (!token) {
       console.error('[v0] Meta token missing')
       return
@@ -102,7 +102,7 @@ async function sendToTelegram(data: LeadFormData) {
 
 export async function submitLead(data: LeadFormData) {
   console.log('[v0] Starting submitLead:', data)
-  
+
   try {
     // Validate Supabase client
     if (!supabase) {
@@ -110,28 +110,30 @@ export async function submitLead(data: LeadFormData) {
       return { success: false, error: 'Database connection error' }
     }
 
-    console.log('[v0] Inserting into Supabase...')
-    
+    console.log('[v0] Inserting into Supabase leads table...')
+
     const { data: insertedData, error } = await supabase
-      .from('lead_submissions')
+      .from('leads')
       .insert([
         {
-          nome_completo: data.name,
+          nome: data.name,
           email: data.email,
-          whatsapp: data.phone,
+          telefone: data.phone,
           cidade: data.city,
           tipo_carreta: data.trailerType,
-          quantidade: parseInt(data.quantity) || 1,
-          prazo_interesse: data.timeframe,
+          quantidade: data.quantity,
+          prazo: data.timeframe,
+          source: 'landing_page',
+          status: 'novo',
         },
       ])
       .select()
 
     if (error) {
       console.error('[v0] Supabase error detail:', JSON.stringify(error, null, 2))
-      return { 
-        success: false, 
-        error: `Database error: ${error.message || 'Unknown database error'}` 
+      return {
+        success: false,
+        error: `Database error: ${error.message || 'Unknown database error'}`
       }
     }
 

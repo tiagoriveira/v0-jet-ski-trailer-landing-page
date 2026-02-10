@@ -45,7 +45,7 @@ export function VideoModal() {
                 className="w-full h-full object-contain"
                 poster="/trailer-thumbnail.jpg"
               >
-                <source src="/DIFERENCIAIS DA JVC CARRETAS ! 👆🏻 CONFIRA ✅#reels #jetski #carretas #explorepage #explore #vir.mp4" type="video/mp4" />
+                <source src="/trailer-video.mp4" type="video/mp4" />
                 <p className="text-white p-4">
                   Seu navegador não suporta vídeo HTML5.{' '}
                   <a

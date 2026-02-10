@@ -16,11 +16,14 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
 export interface Lead {
   id?: string
   created_at?: string
-  name: string
+  nome: string
   email: string
-  phone: string
-  city: string
-  trailer_type: string
-  quantity: string
-  timeframe: string
+  telefone: string
+  cidade: string
+  tipo_carreta: string
+  quantidade: string
+  prazo: string
+  source?: string
+  status?: string
+  updated_at?: string
 }

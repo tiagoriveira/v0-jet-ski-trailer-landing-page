@@ -121,10 +121,10 @@ export async function submitLead(data: LeadFormData) {
           telefone: data.phone,
           cidade: data.city,
           tipo_carreta: data.trailerType,
-          quantidade: data.quantity,
+          quantidade: data.quantity.toString(),
           prazo: data.timeframe,
           source: 'landing_page',
-          status: 'novo',
+          status: 'novo'
         },
       ])
       .select()

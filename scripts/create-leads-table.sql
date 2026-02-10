@@ -21,12 +21,14 @@ CREATE INDEX IF NOT EXISTS leads_created_at_idx ON leads(created_at DESC);
 -- Enable Row Level Security
 ALTER TABLE leads ENABLE ROW LEVEL SECURITY;
 
--- Allow service role to insert (for API)
-CREATE POLICY "Allow service role insert" ON leads
+-- Allow anonymous inserts (for public form submissions)
+CREATE POLICY "Allow public insert" ON leads
   FOR INSERT
+  TO anon, authenticated
   WITH CHECK (true);
 
--- Allow service role to select (for admin viewing)
+-- Allow service role to select all (for admin viewing)
 CREATE POLICY "Allow service role select" ON leads
   FOR SELECT
+  TO service_role
   USING (true);

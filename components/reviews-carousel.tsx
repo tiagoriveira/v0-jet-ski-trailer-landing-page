@@ -13,8 +13,9 @@ import {
   Dialog,
   DialogContent,
   DialogClose,
+  DialogTitle,
 } from '@/components/ui/dialog'
-import { X } from 'lucide-react'
+import { X, VisuallyHidden } from 'lucide-react'
 
 const reviews = [
   {
@@ -52,7 +53,7 @@ export function ReviewsCarousel() {
         <CarouselContent>
           {reviews.map((review, index) => (
             <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-              <div 
+              <div
                 className="relative h-[400px] overflow-hidden rounded-lg bg-muted cursor-pointer transition-transform hover:scale-105"
                 onClick={() => setSelectedImage(review.src)}
               >
@@ -73,6 +74,7 @@ export function ReviewsCarousel() {
 
       <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
         <DialogContent className="max-w-4xl p-0 overflow-hidden">
+          <DialogTitle className="sr-only">Avaliação do Google</DialogTitle>
           <DialogClose className="absolute right-4 top-4 z-50 rounded-full bg-black/50 p-2 text-white hover:bg-black/70 transition-colors">
             <X className="h-4 w-4" />
             <span className="sr-only">Fechar</span>

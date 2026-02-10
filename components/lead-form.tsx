@@ -104,6 +104,14 @@ export function LeadForm() {
           timeframe: '',
         })
         console.log('[v0] Lead submitted successfully:', result)
+        // Meta Pixel Lead Event
+        if (typeof window !== 'undefined' && (window as any).fbq) {
+          ;(window as any).fbq('track', 'Lead', {
+            content_name: `${formData.trailerType} - ${formData.quantity} unidades`,
+            currency: 'BRL',
+            value: 1.0,
+          })
+        }
       } else {
         setError(result.error || 'Erro ao enviar formulário. Tente novamente.')
       }

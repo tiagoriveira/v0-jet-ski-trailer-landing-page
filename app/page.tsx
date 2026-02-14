@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { LeadForm } from '@/components/lead-form'
-
+import { TrailerGallery } from '@/components/trailer-gallery'
 import { ReviewsCarousel } from '@/components/reviews-carousel'
 import { TrailerTypes } from '@/components/trailer-types'
 import { InstagramFloat } from '@/components/instagram-float'
@@ -189,8 +189,6 @@ export default function Home() {
           <TrailerTypes />
         </div>
       </section>
-
-
 
       {/* Testimonials Section */}
       <section className="py-20">

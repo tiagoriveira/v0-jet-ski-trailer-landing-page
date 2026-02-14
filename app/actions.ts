@@ -1,6 +1,7 @@
 'use server'
 
 import { supabase } from '@/lib/supabase'
+import { createHash, randomUUID } from 'crypto'
 
 export interface LeadFormData {
   name: string
@@ -10,6 +11,11 @@ export interface LeadFormData {
   trailerType: string
   quantity: string
   timeframe: string
+}
+
+// Hash data with SHA-256 for Meta Conversions API
+function hashSHA256(data: string): string {
+  return createHash('sha256').update(data.toLowerCase().trim()).digest('hex')
 }
 
 // Send lead to Meta Conversions API
@@ -23,37 +29,48 @@ async function sendToMetaConversionsAPI(data: LeadFormData) {
       return
     }
 
-    const response = await fetch(`https://graph.facebook.com/v18.0/${pixelId}/conversions`, {
+    const eventId = randomUUID()
+    const payload = {
+      data: [
+        {
+          event_name: 'Lead',
+          event_time: Math.floor(Date.now() / 1000),
+          event_id: eventId,
+          event_source_url: process.env.NEXT_PUBLIC_SITE_URL || 'https://jvccarretas.com',
+          action_source: 'website',
+          user_data: {
+            em: [hashSHA256(data.email)],
+            ph: [hashSHA256(data.phone.replace(/\D/g, ''))],
+            fn: [hashSHA256(data.name.split(' ')[0])],
+            ln: [hashSHA256(data.name.split(' ').slice(1).join(' ') || data.name.split(' ')[0])],
+            ct: [hashSHA256(data.city)],
+          },
+          custom_data: {
+            value: 1,
+            currency: 'BRL',
+            content_name: `${data.trailerType} - ${data.quantity} unidades`,
+          },
+        },
+      ],
+      access_token: token,
+    }
+
+    console.log('[Meta Ads] Sending event:', { event_id: eventId, email: data.email })
+
+    const response = await fetch(`https://graph.facebook.com/v18.0/${pixelId}/events`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        data: [
-          {
-            event_name: 'Lead',
-            event_time: Math.floor(Date.now() / 1000),
-            event_id: `${Date.now()}-${Math.random()}`,
-            event_source_url: process.env.NEXT_PUBLIC_SITE_URL || 'https://jvccarretas.com',
-            user_data: {
-              em: Buffer.from(data.email).toString('hex'),
-              ph: data.phone.replace(/\D/g, ''),
-              fn: data.name.split(' ')[0].toLowerCase(),
-              ln: data.name.split(' ').slice(1).join(' ').toLowerCase(),
-              ct: data.city.toLowerCase(),
-            },
-            custom_data: {
-              value: '1',
-              currency: 'BRL',
-              content_name: `${data.trailerType} - ${data.quantity} unidades`,
-            },
-          },
-        ],
-        access_token: token,
-      }),
+      body: JSON.stringify(payload),
     })
 
+    const result = await response.json()
+
     if (!response.ok) {
-      console.error('[v0] Meta API error:', await response.text())
+      console.error('[Meta Ads] API error:', result)
+      throw new Error(`Meta API failed: ${JSON.stringify(result)}`)
     }
+
+    console.log('[Meta Ads] Success:', result)
   } catch (error) {
     console.error('[v0] Meta API failed:', error)
   }

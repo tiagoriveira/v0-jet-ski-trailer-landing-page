@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { LeadForm } from '@/components/lead-form'
-import { TrailerGallery } from '@/components/trailer-gallery'
+
 import { ReviewsCarousel } from '@/components/reviews-carousel'
 import { TrailerTypes } from '@/components/trailer-types'
 import { InstagramFloat } from '@/components/instagram-float'
@@ -190,21 +190,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Gallery Section */}
-      <section className="bg-muted py-20">
-        <div className="container mx-auto px-4">
-          <div className="mb-12 text-center">
-            <h2 className="mb-4 text-balance text-4xl font-bold text-foreground md:text-5xl">
-              Conheça nossos <span className="text-foreground">produtos</span>
-            </h2>
-            <p className="mx-auto max-w-2xl text-pretty text-lg text-foreground">
-              Veja de perto a qualidade e os detalhes que fazem nossas carretas
-              serem referência no mercado.
-            </p>
-          </div>
-          <TrailerGallery />
-        </div>
-      </section>
+
 
       {/* Testimonials Section */}
       <section className="py-20">

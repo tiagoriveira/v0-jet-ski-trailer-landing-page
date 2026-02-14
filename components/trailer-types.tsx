@@ -1,60 +1,61 @@
+'use client'
+
+import { useState } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
-import Image from 'next/image'
+import { X } from 'lucide-react'
 
 const trailerTypes = [
   {
     name: 'Carreta de Fibra',
-    image: '/images/trends/fibra.jpg',
+    image: '/carreta-fibra.jpg',
     description: 'Leve e resistente, ideal para quem busca praticidade no dia a dia. Construída com fibra de vidro de alta qualidade, oferece excelente durabilidade e facilidade de manuseio.',
     features: ['Leve e prática', 'Resistente a impactos', 'Acabamento em gel coat'],
   },
   {
     name: 'Carreta Padrão',
-    image: '/images/trends/padrao.jpg',
+    image: '/carreta-padrao.jpg',
     description: 'Nossa opção mais versátil e popular. Estrutura em aço com pintura eletrostática, perfeita para uso regular em água doce e eventual uso em água salgada.',
     features: ['Estrutura em aço reforçado', 'Pintura eletrostática', 'Ótimo custo-benefício'],
   },
   {
     name: 'Carreta Premium Personalizada',
-    image: '/images/trends/premium.jpg',
+    image: '/carreta-premium-personalizada.jpg',
     description: 'O topo de linha em carretas personalizadas. Projeto exclusivo adaptado às suas necessidades específicas, com acabamento premium e componentes de primeira linha.',
     features: ['Projeto personalizado', 'Componentes premium', 'Acabamento diferenciado'],
   },
   {
     name: 'Carreta Galvanizada',
-    image: '/images/trends/galvanizada.webp',
+    image: '/carreta-galvanizada.jpg',
     description: 'A escolha definitiva para uso profissional e em água salgada. Galvanização a fogo garante proteção máxima contra corrosão, com durabilidade incomparável.',
     features: ['Galvanização a fogo', 'Máxima proteção', 'Ideal para água salgada'],
   },
 ]
 
 export function TrailerTypes() {
+  const [selectedImage, setSelectedImage] = useState<{ src: string; alt: string } | null>(null)
+
   return (
-    <div className="grid gap-8 md:grid-cols-2">
-      {trailerTypes.map((type, index) => (
-        <Card key={index} className="group overflow-hidden border-border bg-card transition-all hover:shadow-2xl hover:border-primary/30">
-          <div className="relative h-64 overflow-hidden">
-            <Image 
+    <>
+      <div className="grid gap-6 md:grid-cols-2">
+        {trailerTypes.map((type, index) => (
+        <Card key={index} className="border-border bg-card transition-all hover:shadow-xl hover:border-foreground/20">
+          <CardContent className="p-6">
+            <img 
               src={type.image} 
               alt={type.name}
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              className="w-full h-48 object-cover rounded-lg mb-4 cursor-pointer hover:opacity-90 transition-opacity"
+              onClick={() => setSelectedImage({ src: type.image, alt: type.name })}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60" />
-            <div className="absolute bottom-4 left-6">
-               <h3 className="text-2xl font-bold text-white drop-shadow-md">
-                {type.name}
-              </h3>
-            </div>
-          </div>
-          <CardContent className="p-6">
-            <p className="mb-6 text-muted-foreground leading-relaxed">
+            <h3 className="mb-3 text-2xl font-bold text-card-foreground">
+              {type.name}
+            </h3>
+            <p className="mb-4 text-muted-foreground leading-relaxed">
               {type.description}
             </p>
-            <ul className="grid grid-cols-1 gap-3">
+            <ul className="space-y-2">
               {type.features.map((feature, idx) => (
-                <li key={idx} className="flex items-center gap-3 text-sm font-medium text-foreground">
-                  <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-sm">
+                <li key={idx} className="flex items-start gap-2 text-sm text-foreground">
+                  <span className="mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-foreground/90 text-background">
                     ✓
                   </span>
                   <span>{feature}</span>
@@ -64,6 +65,28 @@ export function TrailerTypes() {
           </CardContent>
         </Card>
       ))}
-    </div>
+      </div>
+
+      {/* Modal de Visualização de Imagem */}
+      {selectedImage && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
+          onClick={() => setSelectedImage(null)}
+        >
+          <button
+            className="absolute top-4 right-4 rounded-full bg-white/10 p-2 text-white hover:bg-white/20 transition-colors"
+            onClick={() => setSelectedImage(null)}
+          >
+            <X className="h-6 w-6" />
+          </button>
+          <img
+            src={selectedImage.src}
+            alt={selectedImage.alt}
+            className="max-h-[90vh] max-w-[90vw] object-contain rounded-lg"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
+    </>
   )
 }

@@ -89,8 +89,13 @@ export function LeadForm() {
 
     setIsSubmitting(true)
 
+    // Gera o eventId aqui no cliente para ser compartilhado entre
+    // o Meta Pixel (client-side) e a Conversions API (server-side),
+    // permitindo que o Meta deduplique e conte apenas 1 lead.
+    const eventId = crypto.randomUUID()
+
     try {
-      const result = await submitLead(formData)
+      const result = await submitLead({ ...formData, eventId })
 
       if (result.success) {
         setShowSuccess(true)
@@ -104,13 +109,18 @@ export function LeadForm() {
           timeframe: '',
         })
         console.log('[v0] Lead submitted successfully:', result)
-        // Meta Pixel Lead Event
+        // Meta Pixel Lead Event — usa o mesmo eventId do server para deduplicação
         if (typeof window !== 'undefined' && (window as any).fbq) {
-          ;(window as any).fbq('track', 'Lead', {
-            content_name: `${formData.trailerType} - ${formData.quantity} unidades`,
-            currency: 'BRL',
-            value: 1.0,
-          })
+          ; (window as any).fbq(
+            'track',
+            'Lead',
+            {
+              content_name: `${formData.trailerType} - ${formData.quantity} unidades`,
+              currency: 'BRL',
+              value: 1.0,
+            },
+            { eventID: eventId },
+          )
         }
       } else {
         setError(result.error || 'Erro ao enviar formulário. Tente novamente.')

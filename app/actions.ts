@@ -11,6 +11,7 @@ export interface LeadFormData {
   trailerType: string
   quantity: string
   timeframe: string
+  eventId?: string
 }
 
 // Hash data with SHA-256 for Meta Conversions API
@@ -29,7 +30,8 @@ async function sendToMetaConversionsAPI(data: LeadFormData) {
       return
     }
 
-    const eventId = randomUUID()
+    // Usa o eventId do cliente para deduplicação com o Pixel. Fallback para UUID caso não venha.
+    const eventId = data.eventId || randomUUID()
     const payload = {
       data: [
         {
